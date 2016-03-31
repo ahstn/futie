@@ -11,11 +11,15 @@
     "test:watch": "nwb test --server"
   },
   "dependencies": {
+    "material-ui": "^0.15.0-alpha.2",
     "react": "0.14.x",
-    "react-dom": "0.14.x"
+    "react-dom": "0.14.x",
+    "react-tap-event-plugin": "^0.2.2",
+    "static": "^2.0.0"
   },
   "devDependencies": {
-    "nwb": "0.9.x"
+    "nwb": "0.9.x",
+    "nwb-sass": "^0.5.0"
   },
   "author": "",
   "license": "MIT",
