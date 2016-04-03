@@ -27,7 +27,7 @@ class App extends React.Component {
           onLeftIconButtonTouchTap={this.handleToggle}
           iconClassNameRight='muidocs-icon-navigation-expand-more'
         />
-      <LeftNav open={this.state.open}>
+        <LeftNav open={this.state.open}>
           <MenuItem onTouchTap={this.handleToggle}>Leagues</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
@@ -37,4 +37,4 @@ class App extends React.Component {
   }
 }
 
-export  default App;
+export default App;
