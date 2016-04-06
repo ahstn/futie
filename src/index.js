@@ -1,8 +1,11 @@
 import React from 'react'
-import {render} from 'react-dom'
+import { createStore } from 'redux';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from './App'
+import RootReducer from './reducers/scores'
 import scss from './static/styles/base.scss'
 
 //Needed for onTouchTap
@@ -11,4 +14,11 @@ import scss from './static/styles/base.scss'
 //https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-render(<App/>, document.querySelector('#app'))
+let store = createStore(RootReducer);
+
+render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.querySelector('#app')
+)

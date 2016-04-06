@@ -1,7 +1,11 @@
-import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import LeftNav from 'material-ui/lib/left-nav';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import React from 'react'
+import { connect } from 'react-redux'
+import AppBar from 'material-ui/lib/app-bar'
+import LeftNav from 'material-ui/lib/left-nav'
+import MenuItem from 'material-ui/lib/menus/menu-item'
+
+import { recieveScores } from './actions/scores.js'
+import LiveScores from './containers/LiveScores'
 
 //import scss from 'static/styles/base.scss'; Add scss loader
 
@@ -20,6 +24,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { scores } = this.props;
+    console.log(scores);
     return (
       <div>
         <AppBar
@@ -32,9 +38,14 @@ class App extends React.Component {
           <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
         </LeftNav>
+        <LiveScores />
       </div>
     )
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return { };
+}
+
+export default connect(mapStateToProps)(App);
