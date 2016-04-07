@@ -38,7 +38,9 @@ class App extends React.Component {
           <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
         </LeftNav>
-        <LiveScores />
+        <div className="wrapper">
+          <LiveScores />
+        </div>
       </div>
     )
   }

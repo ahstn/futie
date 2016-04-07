@@ -1,5 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardHeader from 'material-ui/lib/card/card-header';
+import CardTitle from 'material-ui/lib/card/card-title';
+import CardText from 'material-ui/lib/card/card-text';
+
+
 import { recieveScores } from '../actions/scores.js'
 import ScoreList from '../components/ScoreList'
 
@@ -16,10 +23,21 @@ class LiveScores extends React.Component {
 
   render() {
     const { dispatch, scores } = this.props;
-    
+
     return (
       <div>
-        <ScoreList scores={scores} />
+        <Card>
+          <CardHeader
+            title="League"
+            subtitle="Nation"
+            avatar="http://lorempixel.com/100/100/sports/"
+          />
+          <CardText>
+            <ScoreList scores={scores} />
+          </CardText>
+          <CardActions>
+          </CardActions>
+        </Card>
       </div>
     )
   }
