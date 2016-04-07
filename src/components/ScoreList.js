@@ -28,10 +28,13 @@ class ScoreList extends React.Component {
 
   render() {
     const { scores } = this.props;
+
+    if (!scores.fixtures) { return null; }
+
     return (
       <ul>
-        { scores.map(score =>
-          <li>
+        { scores.fixtures.map((score, key) =>
+          <li key={ key }>
             <Avatar src="http://lorempixel.com/100/100/nature" />
             <span className="team">{ score.homeTeamName }</span>
             <span className="score">{ this.handleMatchStatus(score) }</span>

@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render() {
     const { scores } = this.props;
-    console.log(scores);
+    
     return (
       <div>
         <AppBar

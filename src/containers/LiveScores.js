@@ -7,7 +7,7 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import CardText from 'material-ui/lib/card/card-text';
 
 
-import { recieveScores } from '../actions/scores.js'
+import { recieveScores, fetchScores } from '../actions/scores.js'
 import ScoreList from '../components/ScoreList'
 
 class LiveScores extends React.Component {
@@ -18,11 +18,12 @@ class LiveScores extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
 
-    dispatch(recieveScores());
+    dispatch(fetchScores());
   }
 
   render() {
     const { dispatch, scores } = this.props;
+    console.log(scores);
 
     return (
       <div>
