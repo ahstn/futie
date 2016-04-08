@@ -1,5 +1,5 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
 import scss from '../static/styles/ScoreList.scss';
@@ -35,11 +35,11 @@ class ScoreList extends React.Component {
       <ul>
         { scores.fixtures.map((score, key) =>
           <li key={ key }>
-            <Avatar src="http://lorempixel.com/100/100/nature" />
-            <span className="team">{ score.homeTeamName }</span>
-            <span className="score">{ this.handleMatchStatus(score) }</span>
-            <span className="team">{ score.awayTeamName }</span>
-            <Avatar src="http://lorempixel.com/100/100/nature" />
+            <Avatar src='http://lorempixel.com/100/100/nature' />
+            <span className='team'>{ score.homeTeamName }</span>
+            <span className='score'>{ this.handleMatchStatus(score) }</span>
+            <span className='team'>{ score.awayTeamName }</span>
+            <Avatar src='http://lorempixel.com/100/100/nature' />
           </li>
         )}
       </ul>

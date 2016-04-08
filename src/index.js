@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import injectTapEventPlugin from 'react-tap-event-plugin'
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import App from './App'
-import RootReducer from './reducers/scores'
-import scss from './static/styles/base.scss'
+import App from './containers/App';
+import RootReducer from './reducers/scores';
+import scss from './static/styles/base.scss';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release

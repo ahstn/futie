@@ -18,5 +18,14 @@ body, html {
 }
 
 .wrapper {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    margin-left: 256px;
+}
+
+.appbar {
+    z-index: 1301!important;
+}
+
+.drawer {
+    margin-top: 64px;
 }
