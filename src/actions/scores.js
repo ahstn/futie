@@ -1,5 +1,5 @@
-import fetch from 'isomorphic-fetch'
-import { UUID } from '../constants/config'
+import fetch from 'isomorphic-fetch';
+import { UUID } from '../constants/config';
 
 export const RECIEVE_SCORES = 'RECIEVE_SCORES';
 
@@ -58,7 +58,7 @@ export function fetchScores() {
   }
 }
 
-export function recieveScores(scores = initalScores) {
+export function recieveScores(scores = {}) {
   return {
     type: RECIEVE_SCORES,
     payload: {

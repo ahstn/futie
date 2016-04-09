@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import App from './containers/App';
-import RootReducer from './reducers/scores';
+import rootReducer from './reducers/root';
 import scss from './static/styles/base.scss';
 
 //Needed for onTouchTap
@@ -16,7 +16,7 @@ import scss from './static/styles/base.scss';
 injectTapEventPlugin();
 
 let store = createStore(
-  RootReducer,
+  rootReducer,
   applyMiddleware(thunkMiddleware)
 );
 

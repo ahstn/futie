@@ -29,7 +29,7 @@ class ScoreList extends React.Component {
   render() {
     const { scores } = this.props;
 
-    if (!scores.fixtures) { return null; }
+    if (!scores || !scores.fixtures) { return null; }
 
     return (
       <ul>

@@ -5,7 +5,8 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 
-import { fetchScores } from '../actions/scores.js';
+import { fetchScores } from '../actions/scores';
+import { fetchLeagues } from '../actions/leagues';
 import ScoreList from '../components/ScoreList';
 
 class LiveScores extends React.Component {
@@ -17,10 +18,11 @@ class LiveScores extends React.Component {
     const { dispatch } = this.props;
 
     dispatch(fetchScores());
+    dispatch(fetchLeagues());
   }
 
   render() {
-    const { dispatch, scores } = this.props;
+    const { dispatch, scores, leagues } = this.props;
 
     return (
       <div>
@@ -42,8 +44,8 @@ class LiveScores extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { scores } = state;
-  return { scores };
+  const { scores, leagues } = state;
+  return { scores, leagues };
 }
 
 export default connect(mapStateToProps)(LiveScores);
