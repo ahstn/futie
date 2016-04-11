@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
-import { fetchScoresCustom } from '../actions/scores';
+import { fetchScores } from '../actions/scores';
 import scss from '../static/styles/ScoreList.scss';
 
 const propTypes = {
@@ -20,7 +20,7 @@ class ScoreList extends React.Component {
   componentDidMount() {
     const {dispatch, endpoint, gameweek } = this.props;
 
-    dispatch(fetchScoresCustom(endpoint + '/?matchday=' + gameweek));
+    dispatch(fetchScores(endpoint + '/?matchday=' + gameweek));
   }
 
   handleMatchStatus(score) {
