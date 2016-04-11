@@ -58,6 +58,24 @@ export function fetchScores() {
   }
 }
 
+export function fetchScoresCustom(endpoint) {
+  return function(dispatch, getState) {
+    let state = getState();
+
+    // 398 = BPL, 32 = Current gameweek (01/04/16)
+    return fetch(endpoint, {
+      headers: {
+        'X-Auth-Token': UUID
+      }
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch(recieveScores(json));
+    })
+  }
+
+}
+
 export function recieveScores(scores = {}) {
   return {
     type: RECIEVE_SCORES,

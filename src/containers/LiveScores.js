@@ -8,6 +8,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import { fetchScores } from '../actions/scores';
 import { fetchLeagues } from '../actions/leagues';
 import ScoreList from '../components/ScoreList';
+import scss from '../static/styles/card.scss';
 
 class LiveScores extends React.Component {
   constructor(props) {
@@ -17,35 +18,43 @@ class LiveScores extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
 
-    dispatch(fetchScores());
     dispatch(fetchLeagues());
   }
 
   render() {
-    const { dispatch, scores, leagues } = this.props;
+    const { dispatch, leagues } = this.props;
+    if (!leagues || !leagues.filter) { return null; }
 
     return (
       <div>
-        <Card>
-          <CardHeader
-            title='League'
-            subtitle='Nation'
-            avatar='http://lorempixel.com/100/100/sports/'
-          />
-          <CardText>
-            <ScoreList scores={scores} />
-          </CardText>
-          <CardActions>
-          </CardActions>
-        </Card>
+        { leagues.filter(filterLeagues).map( league =>
+          <Card className='card-scores' key={ league.id }>
+            <CardHeader
+              title={ league.caption }
+              subtitle={ 'Gameweek ' +  league.currentMatchday }
+              avatar='http://lorempixel.com/100/100/sports/'
+            />
+            <CardText>
+              <ScoreList
+                gameweek={ league.currentMatchday }
+                endpoint={ league._links.fixtures.href } />
+            </CardText>
+            <CardActions>
+            </CardActions>
+          </Card>
+        )}
       </div>
     )
   }
 }
 
+function filterLeagues(value) {
+    return value.id == 398 || value.id == 394 || value.id == 399
+}
+
 function mapStateToProps(state) {
-  const { scores, leagues } = state;
-  return { scores, leagues };
+  const { leagues } = state;
+  return { leagues };
 }
 
 export default connect(mapStateToProps)(LiveScores);

@@ -2,12 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
+import { fetchScoresCustom } from '../actions/scores';
 import scss from '../static/styles/ScoreList.scss';
+
+const propTypes = {
+  endpoint: React.PropTypes.string,
+  gameweek: React.PropTypes.number
+};
 
 class ScoreList extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleMatchStatus = this.handleMatchStatus.bind(this);
+  }
+
+  componentDidMount() {
+    const {dispatch, endpoint, gameweek } = this.props;
+
+    dispatch(fetchScoresCustom(endpoint + '/?matchday=' + gameweek));
   }
 
   handleMatchStatus(score) {
@@ -27,7 +40,7 @@ class ScoreList extends React.Component {
   }
 
   render() {
-    const { scores } = this.props;
+    const { dispatch, scores } = this.props;
 
     if (!scores || !scores.fixtures) { return null; }
 
@@ -48,7 +61,8 @@ class ScoreList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  const { scores } = state;
+  return { scores };
 }
 
 export default connect(mapStateToProps)(ScoreList);
