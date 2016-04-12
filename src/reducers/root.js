@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 import leagues from './leagues';
-import scores from './scores';
+import scoresByLeague from './scores';
 
 const rootReducer = combineReducers({
-  scores,
+  scoresByLeague,
   leagues
 });
 

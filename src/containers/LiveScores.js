@@ -22,7 +22,7 @@ class LiveScores extends React.Component {
   }
 
   render() {
-    const { dispatch, leagues } = this.props;
+    const { leagues } = this.props;
     if (!leagues || !leagues.filter) { return null; }
 
     return (
@@ -36,6 +36,7 @@ class LiveScores extends React.Component {
             />
             <CardText>
               <ScoreList
+                league={ league.id }
                 gameweek={ league.currentMatchday }
                 endpoint={ league._links.fixtures.href } />
             </CardText>

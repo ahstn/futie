@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
-import { fetchScores } from '../actions/scores';
+import { fetchScores, fetchScoresIfNeeded } from '../actions/scores';
 import scss from '../static/styles/ScoreList.scss';
 
 const propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  league: React.PropTypes.number,
   endpoint: React.PropTypes.string,
   gameweek: React.PropTypes.number
 };
@@ -18,9 +20,9 @@ class ScoreList extends React.Component {
   }
 
   componentDidMount() {
-    const {dispatch, endpoint, gameweek } = this.props;
+    const {dispatch, league, gameweek, endpoint } = this.props;
 
-    dispatch(fetchScores(endpoint + '/?matchday=' + gameweek));
+    dispatch(fetchScoresIfNeeded(league, endpoint + '/?matchday=' + gameweek));
   }
 
   handleMatchStatus(score) {
@@ -40,8 +42,7 @@ class ScoreList extends React.Component {
   }
 
   render() {
-    const { dispatch, scores } = this.props;
-
+    const { scores, isFetching, league } = this.props;
     if (!scores || !scores.fixtures) { return null; }
 
     return (
@@ -61,8 +62,12 @@ class ScoreList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { scores } = state;
-  return { scores };
+  const { scoresByLeague, league } = state;
+  const { isFetching, scores: scores } = scoresByLeague[league] || {
+    isFetching: true,
+    scores: []
+  };
+  return { league, isFetching, scores };
 }
 
 export default connect(mapStateToProps)(ScoreList);
