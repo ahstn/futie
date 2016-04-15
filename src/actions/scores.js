@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { UUID } from '../constants/config';
 
 export const REQUEST_SCORES = 'REQUEST_SCORES';
-export const RECIEVE_SCORES = 'RECIEVE_SCORES';
+export const RECEIVE_SCORES = 'RECEIVE_SCORES';
 
 export function requestScores(league) {
   return {
@@ -11,9 +11,9 @@ export function requestScores(league) {
   }
 }
 
-export function recieveScores(scores = {}, league) {
+export function receiveScores(scores = {}, league) {
   return {
-    type: RECIEVE_SCORES,
+    type: RECEIVE_SCORES,
     league: league,
     scores: scores
   };
@@ -25,7 +25,7 @@ export function fetchScores(league, endpoint) {
     dispatch(requestScores(league))
     return fetch(endpoint, { headers: { 'X-Auth-Token': UUID }})
       .then(response => response.json())
-      .then(json => dispatch(recieveScores(json, league)))
+      .then(json => dispatch(receiveScores(json, league)))
   }
 }
 

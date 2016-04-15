@@ -1,18 +1,11 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
-import { fetchScores, fetchScoresIfNeeded } from '../actions/scores';
+import { fetchScoresIfNeeded } from '../actions/scores';
 import scss from '../static/styles/ScoreList.scss';
 
-const propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  league: React.PropTypes.number,
-  endpoint: React.PropTypes.string,
-  gameweek: React.PropTypes.number
-};
-
-class ScoreList extends React.Component {
+class ScoreList extends Component {
   constructor(props) {
     super(props);
 
@@ -20,9 +13,9 @@ class ScoreList extends React.Component {
   }
 
   componentDidMount() {
-    const {dispatch, league, gameweek, endpoint } = this.props;
+    const { dispatch, leagueID, gameweek, endpoint } = this.props;
 
-    dispatch(fetchScoresIfNeeded(league, endpoint + '/?matchday=' + gameweek));
+    dispatch(fetchScoresIfNeeded(leagueID, endpoint + '/?matchday=' + gameweek));
   }
 
   handleMatchStatus(score) {
@@ -36,13 +29,13 @@ class ScoreList extends React.Component {
     }
     else {
       // 11 Time start index, 16 Time end index. Make this dynamic later
-      score_time - score.date.substring(11, 16);
+      score_time = score.date.substring(11, 16);
     }
     return score_time;
   }
 
   render() {
-    const { scores, isFetching, league } = this.props;
+    const { scores, isFetching, leagueID } = this.props;
     if (!scores || !scores.fixtures) { return null; }
 
     return (
@@ -61,13 +54,20 @@ class ScoreList extends React.Component {
   }
 }
 
+ScoreList.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  leagueID: PropTypes.number,
+  endpoint: PropTypes.string,
+  gameweek: PropTypes.number
+};
+
 function mapStateToProps(state) {
-  const { scoresByLeague, league } = state;
-  const { isFetching, scores: scores } = scoresByLeague[league] || {
+  const { scoresByLeague, leagueID } = state;
+  const { isFetching, scores: scores } = scoresByLeague[leagueID] || {
     isFetching: true,
     scores: []
   };
-  return { league, isFetching, scores };
+  return { leagueID, isFetching, scores };
 }
 
 export default connect(mapStateToProps)(ScoreList);

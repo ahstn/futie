@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 
 import LiveScores from '../containers/LiveScores';
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);

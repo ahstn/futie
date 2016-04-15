@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 
-import { fetchScores } from '../actions/scores';
 import { fetchLeagues } from '../actions/leagues';
 import ScoreList from '../components/ScoreList';
 import scss from '../static/styles/card.scss';
 
-class LiveScores extends React.Component {
+class LiveScores extends Component {
   constructor(props) {
     super(props);
   }
@@ -36,7 +35,7 @@ class LiveScores extends React.Component {
             />
             <CardText>
               <ScoreList
-                league={ league.id }
+                leagueID={ league.id }
                 gameweek={ league.currentMatchday }
                 endpoint={ league._links.fixtures.href } />
             </CardText>

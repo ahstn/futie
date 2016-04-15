@@ -15,8 +15,6 @@ export function fetchLeagues() {
 export function recieveLeagues(leagues = {}) {
   return {
     type: RECIEVE_LEAGUES,
-    payload: {
-      leagues
-    }
+    leagues: leagues
   };
 }
