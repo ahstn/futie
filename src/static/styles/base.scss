@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 * {
     font-family: "Roboto", sans-serif;;
     font-size: 18px;
@@ -18,14 +20,7 @@ body, html {
 }
 
 .wrapper {
-    padding: 0.75rem;
-    margin-left: 256px;
-}
-
-.appbar {
-    z-index: 1301!important;
-}
-
-.drawer {
-    margin-top: 64px;
+    padding: 1.25rem;
+    margin-left: $sidebar-width;
+    margin-top: $appbar-height
 }

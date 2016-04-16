@@ -1,0 +1,16 @@
+@import 'variables.scss';
+
+.sidebar {
+    box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
+    background-color: $sidebar-color;
+    color: $fg-white;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
+    position: fixed;
+    top: $appbar-height;
+    width: $sidebar-width;
+    z-index: 5;
+}

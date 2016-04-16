@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
+import AppBar from '../components/appbar/AppBar';
+import SideBar from '../components/sidebar/SideBar';
 import LiveScores from '../containers/LiveScores';
 
 class App extends Component {
@@ -26,18 +27,14 @@ class App extends Component {
     return (
       <div>
         <AppBar
-          className='appbar'
           title='Futie'
-          onLeftIconButtonTouchTap={this.handleToggle}
-          iconClassNameRight='muidocs-icon-navigation-expand-more'
-        />
-      <LeftNav
-        docked={true}
-        open={this.state.open}>
+          icon='menu'
+          onLeftIconButtonTouchTap={this.handleToggle}/>
+        <SideBar open={this.state.open}>
           <MenuItem onTouchTap={this.handleToggle}>Leagues</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
-        </LeftNav>
+        </SideBar>
         <div className='wrapper'>
           <LiveScores />
         </div>

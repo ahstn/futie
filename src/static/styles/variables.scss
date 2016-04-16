@@ -1,0 +1,19 @@
+$fg:            #444;
+$fg-light:      #666;
+$fg-80:         rgba($fg, .8);
+
+$fg-white:      #FFF;
+$fg-white-80:   rgba($fg-white, .8);
+
+$bg:            #F9F9F9;
+$bg-light:      #FFF;
+$bg-night:      #333;
+$bg-night-80:   rgba($bg-night, .8);
+
+$primary:       #2A3B4C;
+
+$appbar-color: $primary;
+$appbar-height: 65px;
+
+$sidebar-color: white;
+$sidebar-width: 240px;
