@@ -15,9 +15,7 @@ function scores(state = {}, action) {
     default:
       return state;
   }
-
-  return state;
-};
+}
 
 export default function scoresByLeague(state = {}, action) {
   switch (action.type) {

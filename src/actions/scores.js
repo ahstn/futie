@@ -21,7 +21,7 @@ export function receiveScores(scores = {}, league) {
 
 export function fetchScores(league, endpoint) {
   return dispatch => {
-    dispatch(requestScores(league))
+    dispatch(requestScores(league));
     return fetch(endpoint, { headers: { 'X-Auth-Token': UUID }})
       .then(response => response.json())
       .then(json => dispatch(receiveScores(json, league)))

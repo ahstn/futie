@@ -19,7 +19,7 @@ class ScoreList extends Component {
   }
 
   handleMatchStatus(score) {
-    let score_time = '00:00'
+    let score_time = '00:00';
     if (score.status == 'FINISHED') {
       score_time = [
         score.result.goalsHomeTeam,
@@ -35,7 +35,8 @@ class ScoreList extends Component {
   }
 
   render() {
-    const { scores, isFetching, leagueID } = this.props;
+    const { scoresByLeague, leagueID } = this.props;
+    const { scores } = scoresByLeague[leagueID] || { isFetching: true, scores: {} };
     if (!scores || !scores.fixtures) { return null; }
 
     return (
@@ -62,12 +63,9 @@ ScoreList.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { scoresByLeague, leagueID } = state;
-  const { isFetching, scores: scores } = scoresByLeague[leagueID] || {
-    isFetching: true,
-    scores: []
-  };
-  return { leagueID, isFetching, scores };
+  const { scoresByLeague } = state;
+
+  return { scoresByLeague };
 }
 
 export default connect(mapStateToProps)(ScoreList);
