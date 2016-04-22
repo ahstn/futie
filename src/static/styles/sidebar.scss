@@ -3,7 +3,7 @@
 .sidebar {
     box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
     background-color: $sidebar-color;
-    color: $fg-white;
+    color: $fg;
     display: block;
     height: 100%;
     overflow: hidden;
@@ -13,4 +13,38 @@
     top: $appbar-height;
     width: $sidebar-width;
     z-index: 5;
+
+    .sidebar-item {
+        a {
+            align-content: center;
+            cursor: pointer;
+            display: flex;
+            padding: .75rem;
+
+            i {
+                align-self: center;
+                font-size: 1.25rem;
+                margin-right: 0.75rem;
+            }
+            i:nth-of-type(2) {
+                align-content: flex-end;
+                margin-right: 0;
+            }
+            span {
+                align-self: center;
+                font-size: 1.1rem;
+                margin-right: auto;
+            }
+        }
+        a:hover {
+            background: rgba(0, 0, 0, .1);
+        }
+        .sidebar-item a {
+            padding-left: 2rem;
+        }
+
+    }
+    .sidebar-item.nested {
+
+    }
 }

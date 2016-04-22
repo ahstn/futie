@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 
 import AppBar from '../components/appbar/AppBar';
 import SideBar from '../components/sidebar/SideBar';
+import SideBarItem from '../components/sidebar/SideBarItem.js';
 import LiveScores from '../containers/LiveScores';
 
 class App extends Component {
@@ -31,7 +32,10 @@ class App extends Component {
           icon='menu'
           onLeftIconButtonTouchTap={this.handleToggle}/>
         <SideBar open={this.state.open}>
-          <MenuItem onTouchTap={this.handleToggle}>Leagues</MenuItem>
+          <SideBarItem title='Leagues' icon='star'>
+            <SideBarItem title='Premier League' icon='dashboard' />
+            <SideBarItem title='Bundesliga' icon='dashboard' />
+          </SideBarItem>
           <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
           <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
         </SideBar>
