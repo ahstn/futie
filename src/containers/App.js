@@ -29,8 +29,8 @@ class App extends Component {
           onLeftIconButtonTouchTap={ this.handleToggle } />
         <SideBar open={ this.state.open }>
           <SideBarItem title='Leagues' icon='star' route=''>
-            <SideBarItem title='Premier League' icon='dashboard' route='/tables' />
-            <SideBarItem title='Bundesliga' icon='dashboard' route='/tables' />
+            <SideBarItem title='Premier League' icon='dashboard' route='/tables/398' />
+            <SideBarItem title='Bundesliga' icon='dashboard' route='/tables/394' />
           </SideBarItem>
         </SideBar>
         <div className='wrapper'>
