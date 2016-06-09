@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LeftNav from 'material-ui/lib/left-nav';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 
 import AppBar from '../components/appbar/AppBar';
 import SideBar from '../components/sidebar/SideBar';
@@ -19,35 +17,31 @@ class App extends Component {
   }
 
   handleToggle() {
-    this.setState({ open: !this.state.open })
+    this.setState({ open: !this.state.open });
   }
 
   render() {
-    const { scores } = this.props;
-
     return (
       <div>
         <AppBar
           title='Futie'
           icon='menu'
-          onLeftIconButtonTouchTap={this.handleToggle}/>
-        <SideBar open={this.state.open}>
-          <SideBarItem title='Leagues' icon='star'>
-            <SideBarItem title='Premier League' icon='dashboard' />
-            <SideBarItem title='Bundesliga' icon='dashboard' />
+          onLeftIconButtonTouchTap={ this.handleToggle } />
+        <SideBar open={ this.state.open }>
+          <SideBarItem title='Leagues' icon='star' route=''>
+            <SideBarItem title='Premier League' icon='dashboard' route='/tables' />
+            <SideBarItem title='Bundesliga' icon='dashboard' route='/tables' />
           </SideBarItem>
-          <MenuItem onTouchTap={this.handleToggle}>Players</MenuItem>
-          <MenuItem onTouchTap={this.handleToggle}>Settings</MenuItem>
         </SideBar>
         <div className='wrapper'>
-          <LiveScores />
+           { this.props.children || <LiveScores /> }
         </div>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return { };
 }
 

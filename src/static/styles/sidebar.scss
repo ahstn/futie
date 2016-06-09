@@ -39,6 +39,9 @@
         a:hover {
             background: rgba(0, 0, 0, .1);
         }
+        a:visited {
+          color: $fg;
+        }
         .sidebar-item a {
             padding-left: 2rem;
         }
