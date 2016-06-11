@@ -27,6 +27,8 @@ class LeagueTables extends Component {
 
   render() {
     const { leagues } = this.props;
+    if (!leagues || !leagues.standing) { return null; }
+
     return (
       <Card>
         <CardHeader title={ leagues.leagueCaption } />

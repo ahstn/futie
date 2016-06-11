@@ -28,9 +28,13 @@ class App extends Component {
           icon='menu'
           onLeftIconButtonTouchTap={ this.handleToggle } />
         <SideBar open={ this.state.open }>
+          <SideBarItem title='Scores' icon='home' route='/' />
           <SideBarItem title='Leagues' icon='star' route=''>
-            <SideBarItem title='Premier League' icon='dashboard' route='/tables/398' />
-            <SideBarItem title='Bundesliga' icon='dashboard' route='/tables/394' />
+            <SideBarItem title='Premier League' route='/tables/398' />
+            <SideBarItem title='La Liga' route='/tables/399' />
+            <SideBarItem title='Bundesliga' route='/tables/394' />
+            <SideBarItem title='Ligue 1' route='/tables/396' />
+            <SideBarItem title='Serie A' route='/tables/401' />
           </SideBarItem>
         </SideBar>
         <div className='wrapper'>

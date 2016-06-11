@@ -17,6 +17,7 @@
     .sidebar-item {
         a {
             align-content: center;
+            color: $fg;
             cursor: pointer;
             display: flex;
             padding: .75rem;
@@ -40,10 +41,10 @@
             background: rgba(0, 0, 0, .1);
         }
         a:visited {
-          color: $fg;
+            color: $fg;
         }
         .sidebar-item a {
-            padding-left: 2rem;
+            padding-left: 2.75rem;
         }
 
     }
