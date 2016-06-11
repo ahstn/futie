@@ -8,15 +8,15 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     applyMiddleware(thunkMiddleware, createLogger())
-  )
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers/root', () => {
-      const nextRootReducer = require('../reducers/root').default
-      store.replaceReducer(nextRootReducer)
-    })
+      const nextRootReducer = require('../reducers/root').default;
+      store.replaceReducer(nextRootReducer);
+    });
   }
 
-  return store
+  return store;
 }

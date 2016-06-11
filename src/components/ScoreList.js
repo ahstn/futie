@@ -20,7 +20,7 @@ class ScoreList extends Component {
 
   handleMatchStatus(score) {
     let score_time = '00:00';
-    if (score.status == 'FINISHED') {
+    if (score.status === 'FINISHED') {
       score_time = [
         score.result.goalsHomeTeam,
         ' - ',
@@ -51,7 +51,7 @@ class ScoreList extends Component {
           </li>
         )}
       </ul>
-    )
+    );
   }
 }
 

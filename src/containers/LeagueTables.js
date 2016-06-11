@@ -22,7 +22,6 @@ class LeagueTables extends Component {
     const { dispatch } = this.props;
     const { id } = this.props.routeParams;
 
-    console.log('Mounted');
     dispatch(fetchLeagueTable(id));
   }
 
@@ -30,7 +29,6 @@ class LeagueTables extends Component {
     if (nextProps.routeParams.id !== this.props.routeParams.id) {
       const { dispatch } = nextProps;
       const { id } = nextProps.routeParams;
-      console.log(id + ' ds ' + this.props.routeParams.id);
 
       dispatch(fetchLeagueTable(id));
     }

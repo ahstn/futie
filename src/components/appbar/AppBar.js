@@ -19,7 +19,7 @@ class AppBar extends Component {
           <h1>{ title}</h1>
         </div>
       </header>
-    )
+    );
   }
 }
 

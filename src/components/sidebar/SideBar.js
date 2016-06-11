@@ -14,7 +14,7 @@ class SideBar extends Component {
       <aside className="sidebar">
         { children }
       </aside>
-    )
+    );
   }
 }
 

@@ -5,11 +5,8 @@ class SideBarItem extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { open: false };
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({ open: false });
   }
 
   handleClick() {
@@ -19,8 +16,7 @@ class SideBarItem extends Component {
   render() {
     const { title, icon, route, children } = this.props;
     const { open } = this.state;
-    //const link_param = route ? 'to={ route }' : 'onClick={ this.handleClick }';
-    //let sb_class = open ? 'sidebar-item' : 'sidebar-item_open';
+
     if (route) {
       return (
         <div className='sidebar-item'>
