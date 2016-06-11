@@ -22,5 +22,10 @@ body, html {
 .wrapper {
     padding: 1.25rem;
     margin-left: $sidebar-width;
-    margin-top: $appbar-height
+    margin-top: $appbar-height;
+}
+.wrapper, .wrapper-child {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
 }

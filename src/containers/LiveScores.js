@@ -25,7 +25,7 @@ class LiveScores extends Component {
     if (!leagues || !leagues.filter) { return null; }
 
     return (
-      <div>
+      <div className="wrapper-child">
         { leagues.filter(filterLeagues).map( league =>
           <Card className='card-scores' key={ league.id }>
             <CardHeader
@@ -39,17 +39,15 @@ class LiveScores extends Component {
                 gameweek={ league.currentMatchday }
                 endpoint={ league._links.fixtures.href } />
             </CardText>
-            <CardActions>
-            </CardActions>
           </Card>
         )}
       </div>
-    )
+    );
   }
 }
 
 function filterLeagues(value) {
-    return value.id == 398 || value.id == 394 || value.id == 399
+    return value.id === 398 || value.id === 394 || value.id === 399;
 }
 
 function mapStateToProps(state) {
