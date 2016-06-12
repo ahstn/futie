@@ -41,6 +41,12 @@ class App extends Component {
             <SideBarItem title='Ligue 1' route='/tables/396' />
             <SideBarItem title='Serie A' route='/tables/401' />
           </SideBarItem>
+          <SideBarItem title='Teams'>
+            <SideBarItem title='Liverpool FC' route='/team/64' />
+            <SideBarItem title='Manchester Utd' route='/team/66' />
+            <SideBarItem title='Arsenal FC' route='/team/57' />
+            <SideBarItem title='Chelsea FC' route='/team/61' />
+          </SideBarItem>
         </SideBar>
         <div className='wrapper'>
            { this.props.children || <LiveScores /> }
