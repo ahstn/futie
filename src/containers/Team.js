@@ -5,6 +5,7 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 
+import ScoreList from '../components/ScoreList';
 import { fetchTeam } from '../actions/teams';
 
 class Team extends Component {
@@ -30,15 +31,25 @@ class Team extends Component {
 
   render() {
     const { teams } = this.props;
+    const { id } = this.props.routeParams;
     if (!teams || !teams.shortName) { return null; }
 
     return (
-      <Card>
-        <CardHeader title={ teams.name } subtitle={ teams.code } />
+      <div className='wrapper-child'>
+        <Card className='full-width'>
+          <CardHeader title={ teams.name } subtitle={ teams.code } />
+          <CardText>
+            Squad Value: { teams.squadMarketValue }
+          </CardText>
+        </Card>
+      <Card className='full-width'>
         <CardText>
-          Squad Value: { teams.squadMarketValue }
+          <ScoreList
+            entityID={ parseInt(id) }
+            endpoint={ teams._links.fixtures.href } />
         </CardText>
       </Card>
+      </div>
     );
   }
 }

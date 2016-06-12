@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
 import { fetchScoresIfNeeded } from '../actions/scores';
-import scss from '../static/styles/ScoreList.scss';
+import '../static/styles/ScoreList.scss';
 
 class ScoreList extends Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class ScoreList extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, leagueID, gameweek, endpoint } = this.props;
+    const { dispatch, entityID, refine, endpoint } = this.props;
 
-    dispatch(fetchScoresIfNeeded(leagueID, endpoint + '/?matchday=' + gameweek));
+    dispatch(fetchScoresIfNeeded(entityID, endpoint + (refine || '')));
   }
 
   handleMatchStatus(score) {
@@ -35,8 +35,8 @@ class ScoreList extends Component {
   }
 
   render() {
-    const { scoresByLeague, leagueID } = this.props;
-    const { scores } = scoresByLeague[leagueID] || { isFetching: true, scores: {} };
+    const { scoresByLeague, entityID } = this.props;
+    const { scores } = scoresByLeague[entityID] || { isFetching: true, scores: {} };
     if (!scores || !scores.fixtures) { return null; }
 
     return (
@@ -57,9 +57,9 @@ class ScoreList extends Component {
 
 ScoreList.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  leagueID: PropTypes.number,
+  entityID: PropTypes.number,
   endpoint: PropTypes.string,
-  gameweek: PropTypes.number
+  refine: PropTypes.string
 };
 
 function mapStateToProps(state) {

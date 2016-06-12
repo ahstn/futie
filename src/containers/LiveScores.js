@@ -25,7 +25,7 @@ class LiveScores extends Component {
     if (!leagues || !leagues.filter) { return null; }
 
     return (
-      <div className="wrapper-child">
+      <div className="wrapper-child live-scores">
         { leagues.filter(filterLeagues).map( league =>
           <Card className='card-scores' key={ league.id }>
             <CardHeader
@@ -35,9 +35,9 @@ class LiveScores extends Component {
             />
             <CardText>
               <ScoreList
-                leagueID={ league.id }
-                gameweek={ league.currentMatchday }
-                endpoint={ league._links.fixtures.href } />
+                entityID={ league.id }
+                endpoint={ league._links.fixtures.href }
+                refine={ '?matchday=' + league.currentMatchday } />
             </CardText>
           </Card>
         )}

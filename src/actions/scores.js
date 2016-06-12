@@ -8,7 +8,7 @@ export function requestScores(league) {
   return {
     type: REQUEST_SCORES,
     league
-  }
+  };
 }
 
 export function receiveScores(scores = {}, league) {
@@ -24,16 +24,16 @@ export function fetchScores(league, endpoint) {
     dispatch(requestScores(league));
     return fetch(endpoint, { headers: { 'X-Auth-Token': UUID }})
       .then(response => response.json())
-      .then(json => dispatch(receiveScores(json, league)))
-  }
+      .then(json => dispatch(receiveScores(json, league)));
+  };
 }
 
 export function fetchScoresIfNeeded(league, endpoint) {
   return (dispatch, getState) => {
     if (shouldFetchScores(getState(), league)) {
-      return dispatch(fetchScores(league, endpoint))
+      return dispatch(fetchScores(league, endpoint));
     }
-  }
+  };
 }
 
 function shouldFetchScores(state, league) {
@@ -42,6 +42,6 @@ function shouldFetchScores(state, league) {
     return true;
   }
   if (scores.isFetching) {
-    return false
+    return false;
   }
 }
