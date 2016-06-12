@@ -13,6 +13,7 @@ $bg-night-80:   rgba($bg-night, .8);
 $primary:       #2A3B4C;
 
 $appbar-color: $primary;
+$appbar-hover: lighten($appbar-color, 5%);
 $appbar-height: 65px;
 
 $sidebar-color: white;

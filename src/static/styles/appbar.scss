@@ -10,20 +10,36 @@
     width: 100%;
     z-index: 9;
 
-    .appbar-nav-button {
+
+    .appbar-nav-button, .appbar-title, .appbar-item {
         align-items: center;
         display: inline-flex;
         color: $fg-white;
-        cursor: pointer;
         justify-content: center;
-        margin: 8px;
-        width: 48px;
+        padding: 0.45rem;
+    }
+    .appbar-nav-button {
+        cursor: pointer;
+        width: 3.5rem;
     }
     .appbar-title {
-        align-items: center;
-        color: $fg-white;
+        margin-right: auto;
+    }
+    .appbar-item {
         display: inline-flex;
         justify-content: center;
-        margin: 8px;
+        cursor: pointer;
+        span {
+            margin: 0 .25rem;
+        }
+        i {
+            width: 1.5rem;
+        }
+        &:last-of-type {
+            margin-right: 1.5rem;
+        }
+        &:hover {
+            background-color: $appbar-hover;
+        }
     }
 }

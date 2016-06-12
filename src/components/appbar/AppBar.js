@@ -8,7 +8,7 @@ class AppBar extends Component {
   }
 
   render() {
-    const { title, icon } = this.props;
+    const { title, icon, children } = this.props;
 
     return (
       <header className='appbar'>
@@ -18,6 +18,7 @@ class AppBar extends Component {
         <div className='appbar-title'>
           <h1>{ title}</h1>
         </div>
+        { children }
       </header>
     );
   }

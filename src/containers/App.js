@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AppBar from '../components/appbar/AppBar';
+import AppBarItem from '../components/appbar/AppBarItem';
 import SideBar from '../components/sidebar/SideBar';
 import SideBarItem from '../components/sidebar/SideBarItem.js';
 import LiveScores from '../containers/LiveScores';
@@ -26,7 +27,11 @@ class App extends Component {
         <AppBar
           title='Futie'
           icon='menu'
-          onLeftIconButtonTouchTap={ this.handleToggle } />
+          onLeftIconButtonTouchTap={ this.handleToggle }>
+          <AppBarItem title='Search' icon='search' />
+          <AppBarItem icon='settings' />
+          <AppBarItem icon='more_vert' />
+        </AppBar>
         <SideBar open={ this.state.open }>
           <SideBarItem title='Scores' icon='home' route='/' />
           <SideBarItem title='Leagues' icon='star' route=''>
