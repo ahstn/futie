@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AppBar from '../components/appbar/AppBar';
 import AppBarItem from '../components/appbar/AppBarItem';
 import SideBar from '../components/sidebar/SideBar';
-import SideBarHeader from '../components/sidebar/SideBarHeader';
 import SideBarItem from '../components/sidebar/SideBarItem.js';
 import LiveScores from '../containers/LiveScores';
 
