@@ -14,6 +14,26 @@
     width: $sidebar-width;
     z-index: 5;
 
+    header {
+        width: 100%;
+        padding: 1rem;
+
+        .user {
+            img {
+                float: left;
+                margin-right: .75rem;
+            }
+            h1 {
+                font-size: 18px;
+                margin: .5rem 0;
+            }
+            h2 {
+                font-size: 14px;
+                margin: 0;
+            }
+        }
+    }
+
     .sidebar-item {
         a {
             align-content: center;
