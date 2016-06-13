@@ -19,9 +19,9 @@ export function receiveLeagueTable(leagues = {}) {
   };
 }
 
-export function fetchLeagues() {
+export function fetchLeagues(id = '') {
   return dispatch => {
-    return fetch(leagues_endpoint, { headers: { 'X-Auth-Token': UUID } })
+    return fetch(leagues_endpoint + id, { headers: { 'X-Auth-Token': UUID } })
       .then(response => response.json())
       .then(json => dispatch(receiveLeagues(json)));
   };
