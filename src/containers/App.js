@@ -34,6 +34,7 @@ class App extends Component {
         </AppBar>
         <SideBar open={ this.state.open }>
           <SideBarItem title='Scores' icon='home' route='/' />
+          <SideBarItem title='Euros' icon='home' route='/euros/424' />
           <SideBarItem title='Leagues' icon='star' route=''>
             <SideBarItem title='Premier League' route='/tables/398' />
             <SideBarItem title='La Liga' route='/tables/399' />
