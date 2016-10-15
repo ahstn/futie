@@ -22,22 +22,22 @@ class LiveScores extends Component {
 
   render() {
     const { leagues } = this.props;
-    if (!leagues || !leagues.filter) { return null; }
-
+    if (leagues.length < 1) { return null; }
+    console.log(leagues);
     return (
       <div className="wrapper-child live-scores">
-        { leagues.filter(filterLeagues).map( league =>
-          <Card className='card-scores' key={ league.id }>
+        { Object.keys(leagues).map( key =>
+          <Card className='card-scores' key={ leagues[key].id }>
             <CardHeader
-              title={ league.caption }
-              subtitle={ 'Gameweek ' +  league.currentMatchday }
+              title={ leagues[key].caption }
+              subtitle={ 'Gameweek ' +  leagues[key].currentMatchday }
               avatar='http://lorempixel.com/100/100/sports/'
             />
             <CardText>
               <ScoreList
-                entityID={ league.id }
-                endpoint={ league._links.fixtures.href }
-                refine={ '?matchday=' + league.currentMatchday } />
+                entityID={ leagues[key].id }
+                endpoint={ leagues[key]._links.fixtures.href }
+                refine={ '?matchday=' + leagues[key].currentMatchday } />
             </CardText>
           </Card>
         )}
@@ -47,10 +47,11 @@ class LiveScores extends Component {
 }
 
 function filterLeagues(value) {
-    return value.id === 398 || value.id === 394 || value.id === 399;
+  console.log(value);
+  return value === 426 || value === 427 || value === 436;
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { leagues } = state;
   return { leagues };
 }
