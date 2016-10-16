@@ -23,10 +23,10 @@ class LiveScores extends Component {
   render() {
     const { leagues } = this.props;
     if (leagues.length < 1) { return null; }
-    console.log(leagues);
+
     return (
       <div className="wrapper-child live-scores">
-        { Object.keys(leagues).map( key =>
+        { Object.keys(leagues).filter(filterLeagues).map( key =>
           <Card className='card-scores' key={ leagues[key].id }>
             <CardHeader
               title={ leagues[key].caption }
@@ -48,7 +48,7 @@ class LiveScores extends Component {
 
 function filterLeagues(value) {
   console.log(value);
-  return value === 426 || value === 427 || value === 436;
+  return value == 426;
 }
 
 const mapStateToProps = state => {
