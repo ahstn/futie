@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Avatar from 'material-ui/lib/avatar';
 
+import Team from './Team';
 import { fetchScoresIfNeeded } from '../actions/scores';
 import '../static/styles/ScoreList.scss';
 
@@ -43,11 +44,9 @@ class ScoreList extends Component {
       <ul>
         { scores.fixtures.map((score, key) =>
           <li key={ key }>
-            <Avatar src='http://lorempixel.com/100/100/nature' />
-            <span className='team'>{ score.homeTeamName }</span>
+            <Team endpoint={ score._links.homeTeam.href } id={ key } home='home' />
             <span className='score'>{ this.handleMatchStatus(score) }</span>
-            <span className='team'>{ score.awayTeamName }</span>
-            <Avatar src='http://lorempixel.com/100/100/nature' />
+            <Team endpoint={ score._links.awayTeam.href } id={ key } home='away' />
           </li>
         )}
       </ul>
@@ -62,7 +61,7 @@ ScoreList.propTypes = {
   refine: PropTypes.string
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { scoresByLeague } = state;
 
   return { scoresByLeague };

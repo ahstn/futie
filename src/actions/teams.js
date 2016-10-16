@@ -3,7 +3,6 @@ import { UUID } from '../constants/config';
 
 export const RECEIVE_TEAM = 'RECEIVE_TEAM';
 export const REQUEST_TEAM = 'REQUEST_TEAM';
-const teams_endpoint = 'http://api.football-data.org/v1/teams/';
 
 export function requestTeam(teams = {}) {
   return {
@@ -12,17 +11,39 @@ export function requestTeam(teams = {}) {
   };
 }
 
-export function receiveTeam(teams = {}) {
+export function receiveTeam(teams = {}, id, home) {
   return {
     type: RECEIVE_TEAM,
-    teams: teams
+    teams,
+    id,
+    home
   };
 }
 
-export function fetchTeam(teamID) {
+export function fetchTeam(endpoint = '', id, home) {
   return dispatch => {
-    return fetch(teams_endpoint + teamID, { headers: { 'X-Auth-Token': UUID } })
+    return fetch(endpoint, { headers: { 'X-Auth-Token': UUID } })
       .then(response => response.json())
-      .then(json => dispatch(receiveTeam(json)));
+      .then(json => {
+        dispatch(receiveTeam(json, id, home));
+      });
   };
+}
+
+export function fetchTeamIfNeeded(endpoint) {
+  return (dispatch, getState) => {
+    if (shouldFetchTeam(getState(), endpoint)) {
+      return dispatch(fetchTeam(endpoint));
+    }
+  };
+}
+
+function shouldFetchTeam(state, endpoint) {
+  const team = state.asyncTeams[endpoint];
+  if (!team) {
+    return true;
+  }
+  if (team.isFetching) {
+    return false;
+  }
 }
