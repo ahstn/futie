@@ -11,20 +11,36 @@ ul {
             display: inline-flex;
             align-content: center;
         }
-        img:first-of-type {
-            justify-content: flex-start;
+        div {
+            width: 40%;
         }
-        img:last-of-type {
-            justify-content: flex-end;
+        div:first-of-type {
+            .team {
+                order: 1;
+            }
+            img {
+                justify-content: flex-start;
+                margin-left: 1em;
+                order: 2;
+            }
+        }
+        div:last-of-type {
+            .team {
+                order: 2;
+            }
+            img {
+                justify-content: flex-end;
+                margin-right: 1em;
+            }
         }
         span {
             align-self: center;
         }
-        .team:first-of-type {
+        div:first-of-type .team {
             justify-content: flex-end;
         }
         .team {
-            width: 40%;
+            width: 80%;
         }
         .score {
             justify-content: center;
